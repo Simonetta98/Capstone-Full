@@ -1,0 +1,27 @@
+label{
+    color: #F2F2F2;
+}
+#blur{
+padding: 52px;
+max-width: 622px;
+height: 335px;
+
+background: rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.6px);
+-webkit-backdrop-filter: blur(4.6px);
+border: 1px solid rgba(255, 255, 255, 0.26);
+
+input, button{
+    width: 350px;
+ }
+ button{
+    background-color: #D437FF;
+    border: none;
+    &:hover{
+        background-color: #a82acbde;
+        transition: 0.8s;
+       }
+ }
+}

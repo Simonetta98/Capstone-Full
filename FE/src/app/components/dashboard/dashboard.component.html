@@ -1,0 +1,145 @@
+
+<div id="background" class="container-fluid">
+
+   <div id="dashboard" class="d-flex flex-column align-items-center">
+
+     <div id="home-card" class="card m-5" *ngFor="let p of posts; let i=index">
+
+        <div *ngIf="profile" id="github-post"> <a *ngIf="profile.github" [href]="profile.github"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="45" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a> </div>
+
+        <div class="card-body" [ngClass]="p.isLiked ? 'class1' : 'class2' ">
+            <div *ngIf="p.user" class="d-flex flex-column align-items-start pb-3">
+          <h5 class="card-title"> {{ p.user.name }} </h5>
+          <p class="card-text"><small class="username-at">@<a (click)="sendUsername(p.user.username)" routerLink="/details" routerLinkActive="active" class="username-at">{{p.user.username}}</a></small></p>
+            </div>
+          <h3 class="card-title">{{ p.title }}</h3>
+          <hr>
+          <p class="card-text p-3">{{ p.description }}</p>
+
+        </div>
+        <div class="overflow-hidden"style="max-height: 280px;">
+        <img src="../../../assets/gradient-grainy-gradient-texture-wallpaper_23-2148987171.jpeg" class="card-img-bottom" alt="pic-post-home" class="img-fluid">
+        </div>
+        <div class="d-flex justify-content-center align-items-baseline p-3">
+            <button id="comment" (click)="takeId(p.id)" data-bs-toggle="modal" data-bs-target="#commentModal" type="button" class="btn btn-dark me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                  </svg>
+               </button>
+          <button id="heart" (click)="likeUnlike(p)" [ngClass]="p.isLiked ? 'myClass' : '' "  type="button" class="btn btn-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+              </svg>
+         </button>
+         <div class="d-flex flex-column flex-md-row justify-content-center flex-grow-1">
+         <p class="card-text ps-2 pe-2 m-0 d-sm-none d-md-inline-block"><small>Posted on:</small></p>
+         <p class="card-text"><small>{{p.date}}</small></p>
+        </div>
+         <span class="ms-auto pe-1 d-flex flex-column flex-md-row">Liked by <b class="ps-1 pe-1" data-bs-toggle="modal" data-bs-target="#showLikesModal"> {{p.likes}} </b> <span *ngIf="p.likes==1; else plural"> developer</span><ng-template #plural> developers</ng-template> </span>
+          </div>
+          <div id="divComments" class="container">
+            <div *ngFor="let c of p.comments" id="comments" class="mb-4">
+
+                <div class="d-flex flex-column p-2 ps-3">
+                <div class="d-flex align-items-center">
+                <p class="me-auto mb-0"> <b id="comment-name"> {{c.name}} </b> </p>
+                <button *ngIf="c.user?.id == currUser?.id" (click)="takeComment(c.id, c.text)" data-bs-toggle="modal" data-bs-target="#modifyCommentModal" class="btn ms-auto" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+                </button>
+                <button *ngIf="p.user?.id == currUser?.id || c.user?.id == currUser?.id" (click)="removeComment(c.id, p.id)" id="delete" class="btn" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 17">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                </svg>
+                </button>
+                </div>
+                 <p class="flex-grow-1 mb-0 text-start"> {{c.text}} </p>
+                </div>
+
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!------ SHOW LIKES MODAL ------->
+<div class="modal fade" id="showLikesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Liked by...</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul *ngFor="let p of postLikes">
+            <li *ngIf="p.user"> <a>{{p.user.username}}</a></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+       <!---------- SUBMIT COMMENT MODAL ---------->
+  <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="!submitted" class="modal-title fs-5" id="postModalLabel">Leave a comment...</h1>
+          <h1 *ngIf="submitted" class="modal-title fs-5" id="postModalLabel">Done!</h1>
+          <button *ngIf="!submitted" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="commentForm" (ngSubmit)="leaveComment()">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"></label>
+                  <input formControlName="comment" type="text" class="form-control" id="comment" required>
+                </div>
+
+                  <div class="modal-footer">
+                    <button *ngIf="submitted" (click)="refreshSubmitted()" id="close-btn" type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <button *ngIf="!submitted"  type="submit" [disabled]="commentForm.invalid" id="post-btn" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                      </svg></button>
+                  </div>
+                </form>
+             </div>
+          </div>
+       </div>
+   </div>
+
+   <!---------- MODIFY COMMENT MODAL ---------->
+   <div class="modal fade" id="modifyCommentModal" tabindex="-1" aria-labelledby="modifyCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="!submitted" class="modal-title fs-5" id="postModalLabel">Modify...</h1>
+          <h1 *ngIf="submitted" class="modal-title fs-5" id="postModalLabel">Done!</h1>
+          <button *ngIf="!submitted" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="modifyCommentForm" (ngSubmit)="modifyComment()">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"></label>
+                  <input formControlName="text" type="text" [ngModel]="commentText" autocomplete="off" class="form-control" id="text" required>
+                </div>
+
+                  <div class="modal-footer">
+                    <button *ngIf="submitted" (click)="refreshSubmitted()" id="close-btn" type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    <button *ngIf="!submitted" type="submit" [disabled]="modifyCommentForm.invalid" id="post-btn" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                      </svg></button>
+                  </div>
+                </form>
+             </div>
+          </div>
+       </div>
+   </div>
+
+</div>
+
+

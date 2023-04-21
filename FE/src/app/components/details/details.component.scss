@@ -1,0 +1,111 @@
+.myClass{
+    color : rgb(255, 123, 145);
+  }
+.card{
+    position: relative;
+    color: #F2F2F2;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    img{
+        border-radius: 20px;
+    }
+    b{
+        color: #D437FF;
+    }
+        #github{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            svg{
+                fill: #F2F2F2;
+                transition: all .3s ease-in-out;
+                &:hover{
+                        transform: scale(1.12);
+                }
+            }
+        }
+        #linkedin{
+            width: 33px;
+            position: absolute;
+            right: 52px;
+            top: 5px;
+            transition: all .3s ease-in-out;
+                &:hover{
+                        transform: scale(1.12);
+                }
+        }
+        .profile-pic{
+            margin-top: 35px;
+            width: 150px;
+        }
+        .btn{
+            border: none;
+    }
+
+    #github-post{
+        margin: auto;
+        svg{
+            fill: #F2F2F2;
+            transition: all .3s ease-in-out;
+            &:hover{
+                transform: scale(1.12);
+            }
+        }
+    }
+    small{
+        color: grey;
+    }
+
+    #heart,#comment{
+        background-color: rgba(155, 159, 164, 0.16);
+        border-color: #d437ff00;
+        &:hover{
+            background-color: #d437ff77;
+            transition: 0.4s;
+        }
+        svg{
+            transition: all .3s ease-in-out;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+      }
+      #comments{
+        background-color: rgba(155, 159, 164, 0.16);
+        border-radius: 15px;
+        &:hover{
+            background-color: #d437ff77;
+            transition: 0.4s;
+        }
+        #comment-name{
+            color: rgb(160, 160, 160);
+         }
+         button{
+         svg{
+            fill: rgb(160, 160, 160);
+            &:hover{
+                fill: #ffffffef;
+              }
+           }
+          }
+    }
+}
+.modal-content{
+    background: rgba(126, 49, 161, 0.058);
+    color: #F2F2F2;
+    background-color: #af32d2a0;
+    box-shadow: 0 1px 20px rgba(206, 206, 206, 0.283);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border: 1px solid rgba(15, 15, 15, 0.089);
+    .btn{
+        color:#ffffffef;
+        svg{
+            fill: #ffffffef;
+        }
+    }
+    }

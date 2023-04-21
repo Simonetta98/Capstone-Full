@@ -1,0 +1,154 @@
+*:hover::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+#background{
+    background-image: url("../../../assets/undraw_online_connection_6778.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 18px;
+    background-position-y: -90px;
+}
+#dashboard{
+    height: 100vh;
+    position: relative;
+    overflow-y: scroll;
+}
+.card{
+    background-color: #F2F2F2;
+}
+#user{
+    color: white;
+}
+.myClass{
+    color : rgb(255, 123, 145);
+  }
+#comments{
+    background-color: rgba(155, 159, 164, 0.16);
+    border-radius: 15px;
+}
+#home-card{
+position: relative;
+color: #F2F2F2;
+background: rgba(255, 255, 255, 0.13);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(4.6px);
+border: 1px solid rgba(255, 255, 255, 0.089);
+
+#github-post{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+       svg{
+            fill:#F2F2F2;
+            transition: all .3s ease-in-out;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+}
+small{
+    color: grey;
+}
+b, .username-at{
+    color: #D437FF;
+    text-decoration: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+#comments{
+    &:hover{
+        background-color: #d437ff77;
+        transition: 0.4s;
+    }
+#comment-name{
+    color: rgb(160, 160, 160);
+ }
+ button{
+ svg{
+    fill: rgb(160, 160, 160);
+    &:hover{
+        fill: #ffffffef;
+      }
+   }
+  }
+}
+#heart,#comment{
+    background-color: rgba(155, 159, 164, 0.16);
+    border-color: #d437ff00;
+    &:hover{
+        background-color: #d437ff77;
+        transition: 0.4s;
+    }
+    svg{
+        transition: all .3s ease-in-out;
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+  }
+}
+.modal-content{
+background: rgba(126, 49, 161, 0.058);
+color: #F2F2F2;
+background-color: #af32d2a0;
+box-shadow: 0 1px 20px rgba(206, 206, 206, 0.283);
+backdrop-filter: blur(24px);
+-webkit-backdrop-filter: blur(5.5px);
+border: 1px solid rgba(15, 15, 15, 0.089);
+}
+
+///////////BREAK-POINTS
+
+@media screen and (min-width: 576px) {
+    #home-card {
+        max-width: 430px;
+    }
+    #background{
+        padding-top: 170px;
+        background-position-y: -50px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #home-card {
+        max-width: 460px;
+    }
+    #background{
+        padding-top: 0px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #home-card {
+        max-width: 520px;
+    }
+    #background{
+        background-position-x: 20px;
+        background-size: cover;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #home-card {
+        max-width: 590px;
+    }
+    #background{
+        background-position-x: 20px;
+        background-size: cover;
+    }
+}
+@media screen and (min-width: 1400px) {
+    #home-card {
+        max-width: 665px;
+    }
+    #background{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 18px;
+    background-position-y: -150px;
+    }
+}

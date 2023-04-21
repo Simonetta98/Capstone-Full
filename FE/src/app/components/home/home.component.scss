@@ -1,0 +1,80 @@
+
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 65px;
+    color: #f2f2f2e3;
+    #develop{
+        font-size: 90px;
+        color: #D437FF;
+    }
+}
+svg{
+    width: 540px;
+}
+.log-text{
+    color: rgba(128, 128, 128, 0.963);
+}
+
+#login, #signup{
+    color: #F2F2F2;
+    width: 175px;
+    height: 53px;
+    border-radius: 10px;
+    margin: 5px;
+    &:hover{
+        background-color: #23232378;
+        transition: 0.8s;
+    }
+}
+#signup{
+    background-color: #D437FF;
+    &:hover{
+        background-color: #a82acbde;
+        transition: 0.8s;
+    }
+}
+
+.log-text:after {
+    content:"";
+    animation: spin 18s ease-in-out infinite;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  @keyframes spin {
+    0% { content:"console.log(\"Let's start!\");"; opacity: 0 } //javascript
+    10% { content:"System.out.println(\"Let's start!\");" }   //java
+    20% { content:"print('Let's start!');" }                  //python
+    30% { content:"Console.WriteLine(\"Let's start!\");" }    //C#
+    40% { content:"echo \"Let's start!\";" }                  //php
+    50% { content:"NSLog(@\"Let's start!\");"; opacity: 1 }   //objective-C
+    60% { content:"puts 'Let's start!';" }                    //ruby
+    70% { content:"cout <<\"\nLet's start!\"<< endl;"}        //c++
+    80% { content:"System.out.println(\"Let's start!\");" }  //
+     90% { content:"cat('Let's start!');" }                    //R
+     100% { content:"fprintf (1, 'Let's start!');"; opacity: 0} //matlab
+
+    }
+
+///////////BREAK-POINTS
+
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 992px) {
+        svg{
+            width: 400px;
+        }
+}
+@media screen and (min-width: 1200px) {
+    svg{
+        width: 490px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    svg{
+        width: 570px;
+    }
+}
+
+

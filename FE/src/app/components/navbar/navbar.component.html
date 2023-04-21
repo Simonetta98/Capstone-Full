@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand pb-3">
+    <div class="container-fluid pe-4 ps-4">
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a class="navbar-brand m-0" href="/dashboard">
+                <img src="../../../assets/logo-s-removebg-preview.png" alt="Logo" width="60" height="42" class="d-inline-block align-text-top logo">
+              </a>
+            <ul class="navbar-nav m-auto mb-lg-0 font-monospace">
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                </li>
+
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Home</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+                </li>
+
+                <li class="nav-item d-sm-none d-md-inline-block" *ngIf="isLoggedIn">
+                <div class="d-flex flex-column search">
+                <div id="search-box" class="d-flex" role="search">
+                    <input [ngModel]="searchText" (ngModelChange)="filter($event)" class="form-control me-2" type="search" placeholder="Search username..." aria-label="Search" ngModel>
+                    <div id="search-svg"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="38" fill="#D437FF" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <ul class="searched ps-0" *ngIf="searchText">
+                     <li *ngFor="let n of filteredUsernames" class="ps-3 d-flex align-items-center"> <a (click)="sendUsername(n)" routerLink="/details" routerLinkActive="active">{{n}}</a> </li>
+                  </ul>
+                 </div>
+                </li>
+
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">Signup</a>
+                </li>
+            </ul>
+            <button type="button" class="btn logout p-2" (click)="onLogout()" *ngIf="isLoggedIn">
+                <div class="container justify-content-center p-0">
+                <span class=" font-monospace d-none d-md-inline-block"></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                    <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                  </svg>
+             </div>
+            </button>
+        </div>
+    </div>
+</nav>
+

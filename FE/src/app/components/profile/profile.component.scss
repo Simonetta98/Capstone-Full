@@ -1,0 +1,180 @@
+#test{
+    color: #F2F2F2;
+}
+.myClass{
+    color : rgb(255, 123, 145);
+}
+b{
+    color: #D437FF;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.top-container{
+background: rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.6px);
+-webkit-backdrop-filter: blur(4.6px);
+border: 1px solid rgba(255, 255, 255, 0.26);
+button{
+color: #F2F2F2;
+border: none;
+border-radius: 0%;
+transition: all .3s ease-in-out;
+padding-left: 0;
+padding-right: 0;
+
+display: inline-block;
+padding-bottom:2px;
+background-image: linear-gradient(#F2F2F2 0 0);
+background-position: right -100% bottom 0;
+background-size: 200% 1.5px;
+background-repeat: no-repeat;
+    &:hover{
+       transform: scale(1.1);
+        background-position: left -100% bottom 0;
+        transition: background-position 1.3s;
+    }
+ }
+ }
+ .modal-content{
+    background: rgba(126, 49, 161, 0.058);
+    color: #F2F2F2;
+    background-color: #af32d2a0;
+    box-shadow: 0 1px 20px rgba(206, 206, 206, 0.283);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border: 1px solid rgba(15, 15, 15, 0.089);
+    }
+
+.card-flow{
+    max-height: 200px;
+    min-height: 120px;
+}
+
+#github-post{
+    margin: auto;
+    svg{
+        fill: #F2F2F2;
+        transition: all .3s ease-in-out;
+        &:hover{
+            transform: scale(1.12);
+        }
+    }
+}
+small{
+    color: grey;
+}
+
+#heart,#comment-icon{
+    background-color: rgba(155, 159, 164, 0.16);
+    border-color: #d437ff00;
+    &:hover{
+        background-color: #d437ff77;
+        transition: 0.4s;
+    }
+    svg{
+        transition: all .3s ease-in-out;
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+  }
+  #comments-block{
+    background-color: rgba(155, 159, 164, 0.16);
+    border-radius: 15px;
+    &:hover{
+        background-color: #d437ff77;
+        transition: 0.4s;
+    }
+    #comment-name{
+        color: rgb(160, 160, 160);
+     }
+     button{
+     svg{
+        fill: rgb(160, 160, 160);
+        &:hover{
+            fill: #ffffffef;
+          }
+       }
+      }
+}
+#card-mini{
+    background: rgba(80, 14, 97, 0);
+}
+.card, .liked-posts{
+position: relative;
+color: #F2F2F2;
+background: rgba(255, 255, 255, 0.12);
+border-radius: 20px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.6px);
+-webkit-backdrop-filter: blur(4.6px);
+border: 1px solid rgba(255, 255, 255, 0.26);
+img{
+    border-radius: 20px;
+}
+    #github{
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        svg{
+            fill: #F2F2F2;
+            transition: all .3s ease-in-out;
+            &:hover{
+                    transform: scale(1.12);
+            }
+        }
+    }
+    #linkedin{
+        width: 40px;
+        position: absolute;
+        right: 72px;
+        top: 12px;
+        transition: all .3s ease-in-out;
+            &:hover{
+                    transform: scale(1.12);
+            }
+    }
+    .profile-pic{
+        margin-top: 35px;
+        width: 150px;
+    }
+    .btn{
+        border: none;
+}
+.delete-btn{
+    position: absolute;
+    z-index: 2;
+    left: 95%;
+    top: 2%;
+    transform: translateX(-53%);
+    svg{
+        fill: rgb(121, 121, 121);
+    }
+ }
+ a{
+    color: #D437FF;
+    text-decoration: none;
+ }
+}
+
+///////////BREAK-POINTS
+
+@media screen and (max-width: 768px) {
+  .card{
+    #github{
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    #linkedin{
+        width: 30px;
+        right: 58px;
+    }
+  }
+}
+
+
